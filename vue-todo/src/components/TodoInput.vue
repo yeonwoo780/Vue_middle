@@ -5,27 +5,37 @@
     <span class="addContainer" v-on:click="addTodo">
       <i class="far fa-calendar-plus addBtn"></i>
     </span>
+    <AlertModal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">경고 !</h3>
+    </AlertModal>
   </div>
 </template>
 
 <script>
+import AlertModal from "./common/AlertModal.vue"
+
 export default {
   data: function() {
     return {
-      newTodoItem: ""
+      newTodoItem: "",
+      showModal: false
     }
   },
   methods: {
     addTodo: function(){
       if (this.newTodoItem !== ""){
-        var obj = {completed: false, item: this.newTodoItem};
-        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.$emit("addTodoItem", this.newTodoItem)
         this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput: function() {
       this.newTodoItem = "";
     }
+  },
+  components: {
+    AlertModal: AlertModal
   }
 }
 </script>
