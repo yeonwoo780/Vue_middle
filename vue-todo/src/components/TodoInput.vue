@@ -6,7 +6,11 @@
       <i class="far fa-calendar-plus addBtn"></i>
     </span>
     <AlertModal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">경고 !</h3>
+      <h3 slot="header">
+        경고 !
+        <i class="closeModalBtn fas fa-times" @click="showModal = False"></i>  
+      </h3>
+      <div slot="body">input을 입력하세요.</div>
     </AlertModal>
   </div>
 </template>
@@ -67,5 +71,8 @@ input:focus {
   color: white;
   width: 50px;
   vertical-align: middle;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>
