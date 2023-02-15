@@ -1,11 +1,15 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-    <TodoList v-bind:propsdata="todoItems" 
+    <!-- <TodoInput v-on:addTodoItem="addOneItem"></TodoInput> -->
+    <TodoInput></TodoInput>
+    <!-- <TodoList v-bind:propsdata="todoItems" 
         v-on:removeItem="removeOneItem" 
-        v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter v-on:clearAll="clearAllItem"></TodoFooter>
+        v-on:toggleItem="toggleOneItem"></TodoList> -->
+    <!-- <TodoList v-bind:propsdata="todoItems"></TodoList> -->
+    <TodoList></TodoList>
+    <!-- <TodoFooter v-on:clearAll="clearAllItem"></TodoFooter> -->
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -16,32 +20,32 @@ import TodoList from "./components/TodoList.vue"
 import TodoFooter from "./components/TodoFooter.vue"
 
 export default {
-  data: function(){
-    return{
-      todoItems: []
-    }
-  },
-  methods: {
-    addOneItem: function(todoItem) {
-      const obj = {completed: false, item: todoItem};
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.todoItems.push(obj);
-    },
-    removeOneItem: function(todoItem, index){
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
-    toggleOneItem: function(todoItem, index) {
-      // todoItem.completed = !todoItem.completed;
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearAllItem: function() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
-  },
+  // data: function(){
+  //   return{
+  //     todoItems: []
+  //   }
+  // },
+  // methods: {
+  //   // addOneItem: function(todoItem) {
+  //   //   const obj = {completed: false, item: todoItem};
+  //   //   localStorage.setItem(todoItem, JSON.stringify(obj));
+  //   //   this.todoItems.push(obj);
+  //   // },
+  //   // removeOneItem: function(todoItem, index){
+  //   //   localStorage.removeItem(todoItem.item);
+  //   //   this.todoItems.splice(index, 1);
+  //   // },
+  //   // toggleOneItem: function(todoItem, index) {
+  //   //   // todoItem.completed = !todoItem.completed;
+  //   //   this.todoItems[index].completed = !this.todoItems[index].completed;
+  //   //   localStorage.removeItem(todoItem.item);
+  //   //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+  //   // },
+  //   // clearAllItem: function() {
+  //   //   localStorage.clear();
+  //   //   this.todoItems = [];
+  //   // }
+  // },
 
   components: {
     TodoHeader,
